@@ -105,7 +105,7 @@ This figure uses points instead of being a bar chart. It is also interactive usi
 Question 5
 ---------------------
 
-I think for most people the graphs convey the message better. I personally like numbers and seem to understand tables more easily than figures. Figures often confuse me, where tables I can more easily see what is going on and why. However, I have definitely noticed that is not the case for most people and so I try to be mindful of that and provide figures. [This article](http://www.stat.columbia.edu/~gelman/research/published/dodhia.pdf) discusses how graphics are better for conveying trends. Since the message that the original table was attempting to convey was the point that the two groups were not significantly different- I feel that graphics do just as good or better of a job of conveying that message.
+It seems for many people the graphs convey the message better. I personally like numbers and seem to understand tables more easily than figures. Figures often confuse me, where tables I can more easily see what is going on and why. However, I have definitely noticed that is not the case for most people and so I try to be mindful of that and provide figures. [This article](http://www.stat.columbia.edu/~gelman/research/published/dodhia.pdf) discusses how graphics are better for conveying trends. Since the message that the original table was attempting to convey was the point that the two groups were not significantly different- I feel that graphics do just as good or better of a job of conveying that message.
 
 Question 6
 ---------------------
