@@ -1,7 +1,7 @@
 ---
-title: "Assignment 4"
+title: "Turning Tables into Graphics with R"
 author: "Jacalyn Leake"
-date: "4/20/2021"
+date: "11/14/2021"
 output: html_document
 ---
 
@@ -52,7 +52,7 @@ ACE_descript <- read_csv("https://raw.githubusercontent.com/CalynLeake/AnalysisD
     
 ```
 
-I created a dataset in excel and then converted it to a csv file so that I could upload it to github and read it in that way (so it was reproducible).
+I created a dataset in excel and then converted it to a csv file so that I could upload it to github and read it in that way (so it is reproducible and able to be pulled from the web).
 
 ```{r turn_three_a,echo=FALSE,message=FALSE,warning=FALSE}
 
@@ -100,12 +100,12 @@ ACE_fig
     
 ```
 
-This figure uses points instead of being a bar chart. It is also interactie using plotly. I believe it conveys the same message, in that you can see howthe points tend to stay together with one another per variable, suggesting the groups are not significantly different.
+This figure uses points instead of being a bar chart. It is also interactive using plotly. I believe it conveys the same message, in that you can see how the points tend to stay together with one another per variable, suggesting the groups are not significantly different.
 
 Question 5
 ---------------------
 
-I think for most people the graphs convey the message better. I actually understand tables more easily than figures. Figures often confuse me, where tables I can more easily see what is going on and why. However, I have definitely noticed that is not the case for most people and so I try to be mindful of that when completing these assignments. The article discusses how graphics are better for conveying trends. Since the message that the original table was attempting to convey was the point that the two groups were not significantly different- I feel the graphic do just as good or better of a job of conveying that message.
+I think for most people the graphs convey the message better. I personally like numbers and seem to understand tables more easily than figures. Figures often confuse me, where tables I can more easily see what is going on and why. However, I have definitely noticed that is not the case for most people and so I try to be mindful of that and provide figures. [This article](http://www.stat.columbia.edu/~gelman/research/published/dodhia.pdf) discusses how graphics are better for conveying trends. Since the message that the original table was attempting to convey was the point that the two groups were not significantly different- I feel that graphics do just as good or better of a job of conveying that message.
 
 Question 6
 ---------------------
@@ -117,7 +117,7 @@ Question 7
 
 ```{r turn_seven,echo=FALSE,message=FALSE,warning=FALSE}
 
-ACE_Done <- read_csv("https://raw.githubusercontent.com/CalynLeake/AnalysisData/main/ACE_Done.csv")
+ACE_Done <- read_csv("https://raw.githubusercontent.com/JDLeake/Examples/main/ACE_Data.csv")
 
 ACE_Done %>%
   kable(caption = "Descriptive Statistics of ACEs and Outcome Variables by Cohort at Baseline (Control Group N = 11, Intervention Group N = 17)") %>%
