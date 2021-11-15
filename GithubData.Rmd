@@ -48,7 +48,7 @@ Question 3
 
 ```{r turn_three,message=FALSE,warning=FALSE}
 
-ACE_descript <- read_csv("https://raw.githubusercontent.com/CalynLeake/AnalysisData/main/ACE_Descripted.csv")
+ACE_descript <- read_csv("https://raw.githubusercontent.com/JDLeake/Examples/main/ACE_DATA.csv")
     
 ```
 
@@ -117,7 +117,7 @@ Question 7
 
 ```{r turn_seven,echo=FALSE,message=FALSE,warning=FALSE}
 
-ACE_Done <- read_csv("https://raw.githubusercontent.com/JDLeake/Examples/main/ACE_Data.csv")
+ACE_Done <- read_csv("https://raw.githubusercontent.com/JDLeake/Examples/main/ACE_DATA.csv")
 
 ACE_Done %>%
   kable(caption = "Descriptive Statistics of ACEs and Outcome Variables by Cohort at Baseline (Control Group N = 11, Intervention Group N = 17)") %>%
