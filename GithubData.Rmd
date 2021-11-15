@@ -1,0 +1,128 @@
+---
+title: "Assignment 4"
+author: "Jacalyn Leake"
+date: "4/20/2021"
+output: html_document
+---
+
+```{r que_zero,echo=FALSE,message=FALSE,warning=FALSE}
+library(tidyverse)
+library(rmarkdown)
+library(ggrepel)
+library(forcats)
+library(stringr)
+library(modelr)
+library(broom)
+library(reshape2)
+library(plotly)
+library(kableExtra)
+library(formattable)
+
+```
+
+
+# Turning Tables into Graphics with R
+
+Question 1
+---------------------
+
+**Descriptive Statistics of ACEs and Outcome Variables by Cohort at Baseline (Control Group N = 11, Intervention Group N = 17)**
+
+![A Table from the Internet of Descriptive Statistics](https://www.researchgate.net/profile/Genevieve-Chandler/publication/288685246/figure/tbl2/AS:614317607112716@1523476139368/Descriptive-Statistics-of-ACEs-and-Outcome-Variables-by-Cohort-at-Baseline-Control.png){#id .class width=85% height=85%}
+
+
+Question 2
+---------------------
+
+The article states that the table is meant to convey if there if there are group differences before the intervention (Chandler et al., 2015). The results suggest that there are not. These are very small sample sizes (low power), so it might be difficult to get a statistically significant result with them when testing for group differences. As far as the table itself, I think it does convey the message. I think that it might be a little difficult to read with with the way the cohorts are stacked. That may be a required style or publication issue, though. 
+
+The source article for the table is (in APA reference):
+
+| Chandler, G. E., Roberts, S. J., & Chiodo, L. (2015). Resilience intervention 
+|      for young adults with adverse childhood experiences. Journal of the American 
+|      Psychiatric Nurses Association, 21(6), 406-416. 
+
+
+Question 3
+---------------------
+
+```{r turn_three,message=FALSE,warning=FALSE}
+
+ACE_descript <- read_csv("https://raw.githubusercontent.com/CalynLeake/AnalysisData/main/ACE_Descripted.csv")
+    
+```
+
+I created a dataset in excel and then converted it to a csv file so that I could upload it to github and read it in that way (so it was reproducible).
+
+```{r turn_three_a,echo=FALSE,message=FALSE,warning=FALSE}
+
+
+ACE_descripted <- rename(ACE_descript, outcome_var = variable)
+
+ACE_descripts <- melt(ACE_descripted, id.vars='outcome_var')
+
+ACE_descript2 <- rename(ACE_descripts, Group = variable)
+
+ACE_descript
+
+summary(ACE_descript2)
+
+ggplot(ACE_descript2, aes(x=outcome_var, y=value, fill=Group)) + 
+  theme(axis.text.x = element_text(angle = 90)) +
+    geom_bar(stat='identity', position='dodge')+
+   labs(title = "Comparing Numeric Means of Outcome Variables per Group",
+        subtitle = "Preintervention",
+       x = "By Outcome Variable per Group",
+       y = "Numeric Mean")
+
+```
+
+I feel this graphic serves the same purpose as the table did. We see that there are some differences, but nothing that really jumps out as one group being significantly different from the other. The groups stay fairly near to each other per variable.
+
+Question 4
+---------------------
+
+
+```{r turn_four,echo=FALSE,message=FALSE,warning=FALSE}
+
+ACE_descript <- ACE_descript  %>%
+  group_by(variable)
+
+ACE_fig <- plot_ly(ACE_descript, x = ~variable, y = ~control, name = 'Control Group', type = 'scatter', mode = 'markers') 
+ACE_fig <- ACE_fig %>% add_trace(y = ~intervention, name = 'Intervention Group', mode = 'markers') 
+
+ACE_fig <- ACE_fig %>% layout(title = 'Comparing Numeric Means of Outcome Variables per Group',
+         xaxis = list(title = 'By Outcome Variable per Group'),
+         yaxis = list (title = 'Numeric Mean'))
+
+ACE_fig
+ 
+    
+```
+
+This figure uses points instead of being a bar chart. It is also interactie using plotly. I believe it conveys the same message, in that you can see howthe points tend to stay together with one another per variable, suggesting the groups are not significantly different.
+
+Question 5
+---------------------
+
+I think for most people the graphs convey the message better. I actually understand tables more easily than figures. Figures often confuse me, where tables I can more easily see what is going on and why. However, I have definitely noticed that is not the case for most people and so I try to be mindful of that when completing these assignments. The article discusses how graphics are better for conveying trends. Since the message that the original table was attempting to convey was the point that the two groups were not significantly different- I feel the graphic do just as good or better of a job of conveying that message.
+
+Question 6
+---------------------
+
+I feel like the bar graphic did a better job- which is probably why I chose it to begin with. I like the interactive aspect of the second graphic, though- and the ease of finding the exact values that way. I think the best job would have been making the bar graph interactive. In either case, the graphic makes it possible to see that both of the group's variable's mean values trend together.
+
+Question 7
+---------------------
+
+```{r turn_seven,echo=FALSE,message=FALSE,warning=FALSE}
+
+ACE_Done <- read_csv("https://raw.githubusercontent.com/CalynLeake/AnalysisData/main/ACE_Done.csv")
+
+ACE_Done %>%
+  kable(caption = "Descriptive Statistics of ACEs and Outcome Variables by Cohort at Baseline (Control Group N = 11, Intervention Group N = 17)") %>%
+  kable_styling()
+    
+```
+
+This isn't perfect, but was as close as I could get while still connecting all the right information to both cohorts/groups.
